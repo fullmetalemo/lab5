@@ -14,23 +14,23 @@ public class Running{
             FileManager fileManager = new FileManager(envVariable);
             CollectionManager collectionManager = new CollectionManager(fileManager);
     
-            CommandManager commandManager = new CommandManager( //not finished
+            CommandManager commandManager = new CommandManager(
             new Help(),
-            new Info(),
-            new Show(),
-            new Add(),
-            new UpdateID(),
-            new RemoveByID(),
-            new Clear(),
-            new Save(),
+            new Info(collectionManager),
+            new Show(collectionManager),
+            new Add(collectionManager, personAsker),
+            new UpdateID(collectionManager, personAsker),
+            new RemoveByID(collectionManager),
+            new Clear(collectionManager),
+            new Save(collectionManager),
             new Exit(),
             new ExecuteScript(),
-            new AddIfMax(),
-            new RemoveGreater(),
+            new AddIfMax(collectionManager, personAsker),
+            new RemoveGreater(collectionManager, personAsker),
             new History(),
-            new MaxByHeight(),
-            new FilterByNationality(),
-            new FilterGreaterThanBirthday()
+            new MaxByHeight(collectionManager),
+            new FilterByNationality(collectionManager),
+            new FilterGreaterThanBirthday(collectionManager, )
           );
           Console console = new Console(commandManager, userScanner, marineAsker);
           console.interactiveMode();
